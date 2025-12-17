@@ -1,4 +1,5 @@
 import React from 'react';
+import { sanitizeHtml } from '../utils/sanitizeHtml';
 
 function escapeAttr(str = '') {
   return str
@@ -34,6 +35,16 @@ function generateEmailHtml(data) {
     eventsImage1,
     eventsImage2
   } = data;
+
+  const sanitizedLeadershipBodyHtml = sanitizeHtml(leadershipBodyHtml);
+  const sanitizedImportantAnnouncementsHtml = sanitizeHtml(importantAnnouncementsHtml);
+  const sanitizedComplianceRemindersHtml = sanitizeHtml(complianceRemindersHtml);
+  const sanitizedSafetyRemindersHtml = sanitizeHtml(safetyRemindersHtml);
+  const sanitizedSpecialMessageHtml = sanitizeHtml(specialMessageHtml);
+  const sanitizedCsrHtml = sanitizeHtml(csrHtml);
+  const sanitizedEmployeeEventsHtml = sanitizeHtml(employeeEventsHtml);
+  const sanitizedWinsAndShoutoutsHtml = sanitizeHtml(winsAndShoutoutsHtml);
+  const sanitizedUsefulInfoHtml = sanitizeHtml(usefulInfoHtml);
 
   const logoSrc =
     logoUrl && logoUrl.trim().length > 0
@@ -132,7 +143,7 @@ function generateEmailHtml(data) {
                                   leadershipTitle
                                 )}</div>
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${leadershipBodyHtml}
+                                  ${sanitizedLeadershipBodyHtml}
                                 </div>
                                 <div style="margin-top:12px;font-size:13px;color:#374151;">
                                   Warm regards,<br/>
@@ -164,7 +175,7 @@ function generateEmailHtml(data) {
                               <td style="padding:12px 14px;">
                                 <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#6b21a8;margin-bottom:4px;">Important Announcements</div>
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${importantAnnouncementsHtml}
+                                  ${sanitizedImportantAnnouncementsHtml}
                                 </div>
                               </td>
                             </tr>
@@ -176,7 +187,7 @@ function generateEmailHtml(data) {
                               <td style="padding:12px 14px;">
                                 <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#b91c1c;margin-bottom:4px;">Compliance Reminders</div>
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${complianceRemindersHtml}
+                                  ${sanitizedComplianceRemindersHtml}
                                 </div>
                                 ${
                                   complianceImage
@@ -199,8 +210,8 @@ function generateEmailHtml(data) {
                       <tr>
                         <td style="padding:16px;">
                           <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#15803d;margin-bottom:4px;">Safety Reminders · Storms &amp; Floods</div>
-                          <div style="font-size:14px;color:#111827;line-height:1.6;">
-                            ${safetyRemindersHtml}
+                            <div style="font-size:14px;color:#111827;line-height:1.6;">
+                            ${sanitizedSafetyRemindersHtml}
                           </div>
                         </td>
                       </tr>
@@ -212,7 +223,7 @@ function generateEmailHtml(data) {
                         <td style="padding:16px;">
                           <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#c2410c;margin-bottom:4px;">Special Message · Xmas Season</div>
                           <div style="font-size:14px;color:#111827;line-height:1.6;">
-                            ${specialMessageHtml}
+                            ${sanitizedSpecialMessageHtml}
                           </div>
                         </td>
                       </tr>
@@ -227,7 +238,7 @@ function generateEmailHtml(data) {
                             <tr>
                               <td style="vertical-align:top;">
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${csrHtml}
+                                  ${sanitizedCsrHtml}
                                 </div>
                               </td>
                               <td style="width:160px;padding-left:12px;vertical-align:top;">
@@ -249,7 +260,7 @@ function generateEmailHtml(data) {
                             <tr>
                               <td style="vertical-align:top;">
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${employeeEventsHtml}
+                                  ${sanitizedEmployeeEventsHtml}
                                 </div>
                               </td>
                               <td style="width:160px;padding-left:12px;vertical-align:top;">
@@ -271,7 +282,7 @@ function generateEmailHtml(data) {
                               <td style="padding:12px 14px;">
                                 <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4b5563;margin-bottom:4px;">Wins &amp; Shout-outs</div>
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${winsAndShoutoutsHtml}
+                                  ${sanitizedWinsAndShoutoutsHtml}
                                 </div>
                               </td>
                             </tr>
@@ -283,7 +294,7 @@ function generateEmailHtml(data) {
                               <td style="padding:12px 14px;">
                                 <div style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#4b5563;margin-bottom:4px;">Useful Information</div>
                                 <div style="font-size:14px;color:#111827;line-height:1.6;">
-                                  ${usefulInfoHtml}
+                                  ${sanitizedUsefulInfoHtml}
                                 </div>
                               </td>
                             </tr>

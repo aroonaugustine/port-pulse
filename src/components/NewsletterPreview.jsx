@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import { sanitizeHtml } from '../utils/sanitizeHtml';
 
 export default function NewsletterPreview({ data }) {
   const {
@@ -49,6 +49,16 @@ export default function NewsletterPreview({ data }) {
         }
       : {};
 
+  const sanitizedLeadershipBodyHtml = sanitizeHtml(leadershipBodyHtml);
+  const sanitizedImportantAnnouncementsHtml = sanitizeHtml(importantAnnouncementsHtml);
+  const sanitizedComplianceRemindersHtml = sanitizeHtml(complianceRemindersHtml);
+  const sanitizedSafetyRemindersHtml = sanitizeHtml(safetyRemindersHtml);
+  const sanitizedSpecialMessageHtml = sanitizeHtml(specialMessageHtml);
+  const sanitizedCsrHtml = sanitizeHtml(csrHtml);
+  const sanitizedEmployeeEventsHtml = sanitizeHtml(employeeEventsHtml);
+  const sanitizedWinsAndShoutoutsHtml = sanitizeHtml(winsAndShoutoutsHtml);
+  const sanitizedUsefulInfoHtml = sanitizeHtml(usefulInfoHtml);
+
   return (
     <div className="relative">
       {backgroundImage && (
@@ -96,7 +106,7 @@ export default function NewsletterPreview({ data }) {
               </h2>
               <div
                 className="space-y-1 text-sm leading-relaxed prose prose-sm max-w-none"
-                dangerouslySetInnerHTML={{ __html: leadershipBodyHtml }}
+                dangerouslySetInnerHTML={{ __html: sanitizedLeadershipBodyHtml }}
               />
               <div className="mt-3 text-xs text-slate-600">
                 Warm regards,
@@ -124,7 +134,7 @@ export default function NewsletterPreview({ data }) {
               </div>
               <div
                 className="prose prose-sm max-w-none text-sm"
-                dangerouslySetInnerHTML={{ __html: importantAnnouncementsHtml }}
+                dangerouslySetInnerHTML={{ __html: sanitizedImportantAnnouncementsHtml }}
               />
             </div>
             <div className="rounded-xl border border-red-100 bg-red-50/90 p-3 flex flex-col gap-2">
@@ -133,7 +143,7 @@ export default function NewsletterPreview({ data }) {
               </div>
               <div
                 className="prose prose-sm max-w-none text-sm"
-                dangerouslySetInnerHTML={{ __html: complianceRemindersHtml }}
+                dangerouslySetInnerHTML={{ __html: sanitizedComplianceRemindersHtml }}
               />
               {complianceImage && (
                 <img
@@ -149,20 +159,20 @@ export default function NewsletterPreview({ data }) {
             <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700 mb-1">
               Safety Reminders · Storms &amp; Floods
             </div>
-            <div
-              className="prose prose-sm max-w-none text-sm"
-              dangerouslySetInnerHTML={{ __html: safetyRemindersHtml }}
-            />
+              <div
+                className="prose prose-sm max-w-none text-sm"
+                dangerouslySetInnerHTML={{ __html: sanitizedSafetyRemindersHtml }}
+              />
           </section>
 
           <section className="rounded-xl border border-amber-200 bg-amber-50/90 p-4">
             <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-700 mb-1">
               Special Message · Xmas Season
             </div>
-            <div
-              className="prose prose-sm max-w-none text-sm"
-              dangerouslySetInnerHTML={{ __html: specialMessageHtml }}
-            />
+              <div
+                className="prose prose-sm max-w-none text-sm"
+                dangerouslySetInnerHTML={{ __html: sanitizedSpecialMessageHtml }}
+              />
           </section>
 
           <section className="rounded-xl border border-slate-200 bg-white/90 p-4 space-y-3">
@@ -175,7 +185,7 @@ export default function NewsletterPreview({ data }) {
               <div className="md:col-span-2">
                 <div
                   className="prose prose-sm max-w-none text-sm"
-                  dangerouslySetInnerHTML={{ __html: csrHtml }}
+                  dangerouslySetInnerHTML={{ __html: sanitizedCsrHtml }}
                 />
               </div>
               <div className="space-y-3">
@@ -205,7 +215,7 @@ export default function NewsletterPreview({ data }) {
               <div className="md:col-span-2">
                 <div
                   className="prose prose-sm max-w-none text-sm"
-                  dangerouslySetInnerHTML={{ __html: employeeEventsHtml }}
+                  dangerouslySetInnerHTML={{ __html: sanitizedEmployeeEventsHtml }}
                 />
               </div>
               <div className="space-y-3">
@@ -232,19 +242,19 @@ export default function NewsletterPreview({ data }) {
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 mb-1">
                 Wins &amp; Shout-outs
               </div>
-              <div
-                className="prose prose-sm max-w-none text-sm"
-                dangerouslySetInnerHTML={{ __html: winsAndShoutoutsHtml }}
-              />
+                  <div
+                    className="prose prose-sm max-w-none text-sm"
+                    dangerouslySetInnerHTML={{ __html: sanitizedWinsAndShoutoutsHtml }}
+                  />
             </div>
             <div className="rounded-xl border border-slate-200 bg-slate-50/90 p-3">
               <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 mb-1">
                 Useful Information
               </div>
-              <div
-                className="prose prose-sm max-w-none text-sm"
-                dangerouslySetInnerHTML={{ __html: usefulInfoHtml }}
-              />
+                  <div
+                    className="prose prose-sm max-w-none text-sm"
+                    dangerouslySetInnerHTML={{ __html: sanitizedUsefulInfoHtml }}
+                  />
             </div>
           </section>
 
